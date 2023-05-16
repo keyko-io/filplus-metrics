@@ -1,4 +1,3 @@
 export const config = {
-    apiUri: "http://localhost:4000",
-};
-
+  apiUri: "http://localhost:4000",
+}
