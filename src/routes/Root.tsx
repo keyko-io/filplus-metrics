@@ -1,24 +1,22 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, NavLink } from "react-router-dom"
 import logo from "../assets/fil-plus.svg"
-import blockchain from "../assets/blockchain.svg"
-import bug from "../assets/bug.svg"
-import user from "../assets/user.svg"
+import { BugIcon, CubeIcon, UserIcon } from "../icons"
 
 const navigationItems = [
   {
     name: "Blockchain",
     to: "",
-    svg: blockchain,
+    svg: <CubeIcon />,
   },
   {
     name: "User",
     to: "user",
-    svg: user,
+    svg: <UserIcon />,
   },
   {
     name: "Bugs",
     to: "bugs",
-    svg: bug,
+    svg: <BugIcon />,
   },
 ]
 
@@ -26,28 +24,39 @@ function Root() {
   return (
     <section className="flex">
       <nav className="w-64 min-h-screen shadow-md">
-        <img
-          src={logo}
-          alt="logo"
-          className="h-16 w-full cursor-pointer my-4"
-        />
-        <div className="flex flex-col px-6">
+        <NavLink to="/">
+          <img
+            src={logo}
+            alt="logo"
+            className="h-16 w-full cursor-pointer my-4"
+          />
+        </NavLink>
+
+        <div className="flex flex-col">
           {navigationItems.map((item) => {
             return (
-              <Link
+              <NavLink
+                key={item.name}
                 to={item.to}
-                className="flex h-6 items-center w-full space-x-4 py-6 cursor-pointer"
+                className={({ isActive }) =>
+                  `flex items-center w-full space-x-4 py-3 px-6 cursor-pointer ${
+                    isActive &&
+                    "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+                  }`
+                }
               >
-                <img src={item.svg} alt="blockchain" className="h-6" />
+                {item.svg}
                 <span>{item.name}</span>
-              </Link>
+              </NavLink>
             )
           })}
         </div>
       </nav>
 
-      <main className="bg-[#E7E7E7] flex-1">
-        <Outlet />
+      <main className="bg-[#E7E7E7] flex-1 p-8">
+        <div className="max-w-[1200px]">
+          <Outlet />
+        </div>
       </main>
     </section>
   )
