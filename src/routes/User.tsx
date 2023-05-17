@@ -1,5 +1,11 @@
+import BarChart from "../components/BarChart"
+
 const User = () => {
-  return <div>User</div>
+  return (
+    <div>
+      <BarChart />
+    </div>
+  )
 }
 
 export default User

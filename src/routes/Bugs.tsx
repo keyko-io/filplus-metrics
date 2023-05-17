@@ -1,30 +1,31 @@
-import axios from "axios"
-import { config } from "../config"
-import { isAxiosResponseSuccess } from "../utils"
-import { useEffect } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { getOpenBugsCount } from "../api"
+import { BugIcon } from "../icons"
 
 const Bugs = () => {
-  const fetchOpenBugsCount = async () => {
-    try {
-      const url = `${config.apiUri}/stats/issues`
-      const response = await axios.get(url)
-      if (isAxiosResponseSuccess(response)) {
-        return response.data
-      }
-      console.log("error")
-      console.log(response.status)
-      return { count: 0 }
-    } catch (error) {
-      console.log("error")
-      console.log(error)
-      return { count: 0 }
-    }
-  }
-  useEffect(() => {
-    fetchOpenBugsCount().then((data) => console.log(data))
-  }, [])
+  const bugsQuery = useQuery({
+    queryKey: ["bugs"],
+    queryFn: getOpenBugsCount,
+  })
 
-  return <div>hello i am bugs page</div>
+  if (bugsQuery.isLoading) return <div>Loading...</div>
+
+  return (
+    <>
+      <div className="bg-white flex items-center rounded-md p-4 space-x-4 shadow-md">
+        <BugIcon />
+        <div>Number of bugs reported : {bugsQuery.data.count}</div>
+      </div>
+
+      <a
+        href="https://github.com/keyko-io/filecoin-verifier-frontend/issues"
+        className="mt-4 inline-block font-medium text-blue-600 hover:underline pl-4"
+        target="_blank"
+      >
+        Click here to see the bugs
+      </a>
+    </>
+  )
 }
 
 export default Bugs

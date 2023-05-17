@@ -23,7 +23,7 @@ const navigationItems = [
 function Root() {
   return (
     <section className="flex">
-      <nav className="w-64 min-h-screen shadow-md">
+      <nav className="w-64 min-h-screen shadow-md fixed left-0 top-0">
         <NavLink to="/">
           <img
             src={logo}
@@ -53,7 +53,7 @@ function Root() {
         </div>
       </nav>
 
-      <main className="bg-[#E7E7E7] flex-1 p-8">
+      <main className="bg-[#E7E7E7] flex-1 p-8 ml-64 min-h-screen">
         <div className="max-w-[1200px]">
           <Outlet />
         </div>
