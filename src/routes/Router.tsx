@@ -3,6 +3,7 @@ import Root from "./Root"
 import Blockchain from "./Blockchain"
 import User from "./User"
 import Bugs from "./Bugs"
+import About from "./About"
 
 export const router = createBrowserRouter([
   {
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
         element: <Bugs />,
       },
     ],
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ])

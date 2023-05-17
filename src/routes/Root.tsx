@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom"
+import { Outlet, NavLink, Link } from "react-router-dom"
 import logo from "../assets/fil-plus.svg"
 import { BugIcon, CubeIcon, UserIcon } from "../icons"
 
@@ -23,7 +23,7 @@ const navigationItems = [
 function Root() {
   return (
     <section className="flex">
-      <nav className="w-64 min-h-screen shadow-md fixed left-0 top-0">
+      <nav className="w-64 min-h-screen shadow-md fixed left-0 top-0 flex flex-col">
         <NavLink to="/">
           <img
             src={logo}
@@ -32,14 +32,14 @@ function Root() {
           />
         </NavLink>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col flex-1">
           {navigationItems.map((item) => {
             return (
               <NavLink
                 key={item.name}
                 to={item.to}
                 className={({ isActive }) =>
-                  `flex items-center w-full space-x-4 py-3 px-6 cursor-pointer ${
+                  `flex items-center space-x-4 py-3 pl-6 cursor-pointer ${
                     isActive &&
                     "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
                   }`
@@ -51,6 +51,10 @@ function Root() {
             )
           })}
         </div>
+
+        <Link to="/about" className="border-t text-center py-4">
+          <span>About Fil+ Metrics</span>
+        </Link>
       </nav>
 
       <main className="bg-[#E7E7E7] flex-1 p-8 ml-64 min-h-screen">

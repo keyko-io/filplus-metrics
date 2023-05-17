@@ -19,7 +19,7 @@ const Bugs = () => {
 
       <a
         href="https://github.com/keyko-io/filecoin-verifier-frontend/issues"
-        className="mt-4 inline-block font-medium text-blue-600 hover:underline pl-4"
+        className="mt-4 inline-block font-medium text-blue-500 hover:underline pl-4"
         target="_blank"
       >
         Click here to see the bugs
