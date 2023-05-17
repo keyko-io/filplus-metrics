@@ -28,7 +28,7 @@ function Root() {
           <img
             src={logo}
             alt="logo"
-            className="h-16 w-full cursor-pointer my-4"
+            className="h-16 w-full cursor-pointer my-3"
           />
         </NavLink>
 

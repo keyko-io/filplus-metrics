@@ -1,5 +1,6 @@
 import ReactEcharts from "echarts-for-react"
 import { InfoIcon } from "../icons"
+import Tooltip from "./Tooltip"
 
 const BarChart = () => {
   const data = [
@@ -58,10 +59,11 @@ const BarChart = () => {
 
   return (
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
-      <div className="flex justify-between px-10 items-center">
+      <div className="flex justify-between px-10 items-center z-10">
         <h4 className="text-xl font-semibold">Proposal</h4>
-
-        <InfoIcon />
+        <Tooltip text="Information about the metrics here.">
+          <InfoIcon />
+        </Tooltip>
       </div>
 
       <ReactEcharts option={option} />
