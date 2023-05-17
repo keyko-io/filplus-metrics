@@ -1,8 +1,11 @@
 import ReactEcharts from "echarts-for-react"
 import { InfoIcon } from "../icons"
 import Tooltip from "./Tooltip"
+import { useState } from "react"
 
 const BarChart = () => {
+  const [tab, setTab] = useState("7d")
+
   const data = [
     { day: "may1", positive: 28, negative: 2 },
     { day: "may2", positive: 12, negative: 3 },
@@ -61,9 +64,31 @@ const BarChart = () => {
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
       <div className="flex justify-between px-10 items-center z-10">
         <h4 className="text-xl font-semibold">Proposal</h4>
-        <Tooltip text="Information about the metrics here.">
-          <InfoIcon />
-        </Tooltip>
+        <div className="flex items-center space-x-4">
+          <Tooltip text="Information about the metrics here.">
+            <InfoIcon />
+          </Tooltip>
+          <div>
+            <button
+              onClick={() => setTab("7d")}
+              className={`text-xs bg-gray-100 px-2 py-1 ${
+                tab === "7d" &&
+                "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+              }`}
+            >
+              7D
+            </button>
+            <button
+              onClick={() => setTab("14d")}
+              className={`text-xs bg-gray-100 px-2 py-1 ${
+                tab === "14d" &&
+                "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+              }`}
+            >
+              14D
+            </button>
+          </div>
+        </div>
       </div>
 
       <ReactEcharts option={option} />

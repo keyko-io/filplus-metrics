@@ -54,7 +54,7 @@ function Root() {
       </nav>
 
       <main className="bg-[#E7E7E7] flex-1 p-8 ml-64 min-h-screen">
-        <div className="max-w-[1200px]">
+        <div className="max-w-[1200px] mx-auto">
           <Outlet />
         </div>
       </main>
