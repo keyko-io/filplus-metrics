@@ -14,16 +14,8 @@ const Bugs = () => {
     <>
       <div className="bg-white flex items-center rounded-md p-4 space-x-4 shadow-md">
         <BugIcon />
-        <div>Number of bugs reported : {bugsQuery.data.count}</div>
+        <div> Number of open bugs : {bugsQuery.data.count}</div>
       </div>
-
-      <a
-        href="https://github.com/keyko-io/filecoin-verifier-frontend/issues"
-        className="mt-4 inline-block font-medium text-blue-500 hover:underline pl-4"
-        target="_blank"
-      >
-        Click here to see the bugs
-      </a>
     </>
   )
 }
