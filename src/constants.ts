@@ -1,4 +1,4 @@
-export const METRICS_TOOLTIP_INFO = {
+export const METRICS_TOOLTIP_INFO: any = {
   propose: {
     success: {
       title: "Number of successful request proposals:",
@@ -34,4 +34,10 @@ export const METRICS_TOOLTIP_INFO = {
     },
     extraInfo: "",
   },
+}
+
+export const CHART_TITLES: any = {
+  propose: "Proposal",
+  approve: "Approval",
+  ledgerLogin: "Ledger Login",
 }

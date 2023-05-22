@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom"
 import Root from "./Root"
 import Blockchain from "./Blockchain"
 import User from "./User"
-import Bugs from "./Bugs"
 import About from "./About"
 
 export const router = createBrowserRouter([
@@ -17,10 +16,6 @@ export const router = createBrowserRouter([
       {
         path: "user",
         element: <User />,
-      },
-      {
-        path: "bugs",
-        element: <Bugs />,
       },
     ],
   },

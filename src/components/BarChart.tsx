@@ -2,29 +2,33 @@ import ReactEcharts from "echarts-for-react"
 import { InfoIcon } from "../icons"
 import Tooltip from "./Tooltip"
 import { useState } from "react"
-import { METRICS_TOOLTIP_INFO } from "../constants"
+import { CHART_TITLES, METRICS_TOOLTIP_INFO } from "../constants"
 
-const BarChart = () => {
+interface Props {
+  graphData: any
+}
+
+const BarChart = ({ graphData }: Props) => {
   const [tab, setTab] = useState("7d")
 
-  const data = [
-    { day: "may1", positive: 28, negative: 2 },
-    { day: "may2", positive: 12, negative: 3 },
-    { day: "may3", positive: 19, negative: 3 },
-    { day: "may4", positive: 20, negative: 3 },
-    { day: "may5", positive: 21, negative: 3 },
-    { day: "may6", positive: 29, negative: 3 },
-    { day: "may7", positive: 30, negative: 3 },
-    { day: "may8", positive: 28, negative: 2 },
-    { day: "may9", positive: 12, negative: 3 },
-    { day: "may10", positive: 19, negative: 3 },
-    { day: "may11", positive: 20, negative: 3 },
-    { day: "may12", positive: 21, negative: 3 },
-    { day: "may13", positive: 29, negative: 3 },
-    { day: "may14", positive: 30, negative: 3 },
-  ]
+  const success = graphData.success
+  const failure = graphData.failure
 
-  const chartData = data.map((item) => ({
+  let data: any = []
+
+  if (success && failure) {
+    data = Object.keys(success).map((key) => ({
+      day: key,
+      positive: success[key],
+      negative: failure[key],
+    }))
+  }
+
+  if (tab === "7d") {
+    data = data.slice(7, 14)
+  }
+
+  const chartData = data.map((item: any) => ({
     name: item.day,
     value: [item.negative, item.positive],
   }))
@@ -39,7 +43,7 @@ const BarChart = () => {
     },
     xAxis: {
       type: "category",
-      data: data.map((item) => item.day),
+      data: data.map((item: any) => item.day),
     },
     yAxis: {
       type: "value",
@@ -49,7 +53,7 @@ const BarChart = () => {
         name: "Success",
         stack: "total",
         type: "bar",
-        data: chartData.map((item) => item.value[1]),
+        data: chartData.map((item: any) => item.value[1]),
         itemStyle: {
           color: "#2196F3",
         },
@@ -58,7 +62,7 @@ const BarChart = () => {
         name: "Failure",
         stack: "total",
         type: "bar",
-        data: chartData.map((item) => item.value[0]),
+        data: chartData.map((item: any) => item.value[0]),
         itemStyle: {
           color: "#FF5722",
         },
@@ -69,7 +73,9 @@ const BarChart = () => {
   return (
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
       <div className="flex justify-between px-10 items-center z-10">
-        <h4 className="text-xl font-semibold">Proposal</h4>
+        <h4 className="text-xl font-semibold">
+          {CHART_TITLES[graphData.title]}
+        </h4>
         <div className="flex items-center space-x-4">
           <Tooltip
             comp={
@@ -77,18 +83,22 @@ const BarChart = () => {
                 <p>
                   <span className="bg-[#2196F3] h-2 w-2 inline-block mr-1"></span>
                   <span className="pr-1 font-semibold">
-                    {METRICS_TOOLTIP_INFO.propose.success.title}
+                    {METRICS_TOOLTIP_INFO[graphData.title].success.title}
                   </span>
-                  <span>{METRICS_TOOLTIP_INFO.propose.success.desc}</span>
+                  <span>
+                    {METRICS_TOOLTIP_INFO[graphData.title].success.desc}
+                  </span>
                 </p>
                 <p>
                   <span className="bg-[#FF5722] h-2 w-2 inline-block mr-1"></span>
                   <span className="pr-1 font-semibold">
-                    {METRICS_TOOLTIP_INFO.propose.failed.title}
+                    {METRICS_TOOLTIP_INFO[graphData.title].failed.title}
                   </span>
-                  <span>{METRICS_TOOLTIP_INFO.propose.failed.desc}</span>
+                  <span>
+                    {METRICS_TOOLTIP_INFO[graphData.title].failed.desc}
+                  </span>
                 </p>
-                <p>{METRICS_TOOLTIP_INFO?.propose?.extraInfo}</p>
+                <p>{METRICS_TOOLTIP_INFO?.[graphData.title]?.extraInfo}</p>
               </div>
             }
           >

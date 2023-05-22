@@ -18,6 +18,16 @@ export const fetchSentryData = async (
   }
 }
 
+export const fetchNewData = async () => {
+  try {
+    const response = await axios.get(`${config.apiUri}/stats/old`)
+
+    return response.data
+  } catch (error) {
+    return {}
+  }
+}
+
 export async function getOpenBugsCount() {
   const url = `${config.apiUri}/stats/issues`
   const res = await axios.get(url)
