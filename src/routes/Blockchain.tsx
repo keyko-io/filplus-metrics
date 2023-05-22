@@ -12,8 +12,6 @@ const Blockchain = () => {
 
   const { response } = chartData.data
 
-  console.log(response, "xx")
-
   const requestApproved = response["Request Approved"]
   const approvalFailed = response["Approval Failed"]
 
