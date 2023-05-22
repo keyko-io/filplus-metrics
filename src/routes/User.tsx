@@ -12,16 +12,38 @@ const User = () => {
 
   const { response } = chartData.data
 
-  console.log(response, "xx")
-
   const ledgerLoginSuccessful = response["Ledger Login Successful"]
   const ledgerLoginFailed = response["Ledger Login Failed"]
+
+  const githubLoginSuccessful = response["Github Login Success"]
+  const githubloginFailed: any = {}
+
+  for (const key in githubLoginSuccessful) {
+    githubloginFailed[key] = 0
+  }
+
+  const githubTokenSuccesful = response["Loaded Github Token Successfully"]
+  const githubTokenFailed: any = {}
+
+  for (const key in githubTokenSuccesful) {
+    githubTokenFailed[key] = 0
+  }
 
   const userData = [
     {
       title: "ledgerLogin",
       success: ledgerLoginSuccessful,
       failure: ledgerLoginFailed,
+    },
+    {
+      title: "githubLogin",
+      success: githubLoginSuccessful,
+      failure: githubloginFailed,
+    },
+    {
+      title: "githubToken",
+      success: githubTokenSuccesful,
+      failure: githubTokenFailed,
     },
   ]
 

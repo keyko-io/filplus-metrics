@@ -3,16 +3,18 @@ import { InfoIcon } from "../icons"
 import Tooltip from "./Tooltip"
 import { useState } from "react"
 import { CHART_TITLES, METRICS_TOOLTIP_INFO } from "../constants"
+import { calculateTotalLastNDays } from "../utils"
 
 interface Props {
   graphData: any
 }
 
 const BarChart = ({ graphData }: Props) => {
-  const [tab, setTab] = useState("7d")
+  const [tab, setTab] = useState(7)
 
-  const success = graphData.success
-  const failure = graphData.failure
+  const success: Record<string, number> = graphData.success
+
+  const failure: Record<string, number> = graphData.failure
 
   let data: any = []
 
@@ -24,7 +26,7 @@ const BarChart = ({ graphData }: Props) => {
     }))
   }
 
-  if (tab === "7d") {
+  if (tab === 7) {
     data = data.slice(7, 14)
   }
 
@@ -76,6 +78,10 @@ const BarChart = ({ graphData }: Props) => {
         <h4 className="text-xl font-semibold">
           {CHART_TITLES[graphData.title]}
         </h4>
+        <div className="flex space-x-2">
+          <div>{calculateTotalLastNDays(success, tab)}</div>
+          <div>{calculateTotalLastNDays(failure, tab)}</div>
+        </div>
         <div className="flex items-center space-x-4">
           <Tooltip
             comp={
@@ -106,18 +112,18 @@ const BarChart = ({ graphData }: Props) => {
           </Tooltip>
           <div>
             <button
-              onClick={() => setTab("7d")}
+              onClick={() => setTab(7)}
               className={`text-xs bg-gray-100 px-2 py-1 ${
-                tab === "7d" &&
+                tab === 7 &&
                 "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
               }`}
             >
               7D
             </button>
             <button
-              onClick={() => setTab("14d")}
+              onClick={() => setTab(14)}
               className={`text-xs bg-gray-100 px-2 py-1 ${
-                tab === "14d" &&
+                tab === 14 &&
                 "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
               }`}
             >

@@ -34,10 +34,34 @@ export const METRICS_TOOLTIP_INFO: any = {
     },
     extraInfo: "",
   },
+  githubLogin: {
+    success: {
+      title: "Number of Ledger Logins:",
+      desc: "Number of times users successfully link their ledger to the dashboard.",
+    },
+    failed: {
+      title: "Number of unsuccessful Ledger Logins:",
+      desc: "Number of times users fail to link their ledger to the dashboard.",
+    },
+    extraInfo: "",
+  },
+  githubToken: {
+    success: {
+      title: "Number of Ledger Logins:",
+      desc: "Number of times users successfully link their ledger to the dashboard.",
+    },
+    failed: {
+      title: "Number of unsuccessful Ledger Logins:",
+      desc: "Number of times users fail to link their ledger to the dashboard.",
+    },
+    extraInfo: "",
+  },
 }
 
 export const CHART_TITLES: any = {
   propose: "Proposal",
   approve: "Approval",
   ledgerLogin: "Ledger Login",
+  githubLogin: "Github Login",
+  githubToken: "Github Token Load",
 }
