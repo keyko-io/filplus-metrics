@@ -2,133 +2,70 @@ import ReactEcharts from "echarts-for-react"
 import { InfoIcon } from "../icons"
 import Tooltip from "./Tooltip"
 import { useState } from "react"
-import { CHART_TITLES, METRICS_TOOLTIP_INFO } from "../constants"
-import { calculateTotalLastNDays } from "../utils"
+import { CHART_TITLES, ChartKey } from "../constants"
+import TotalCount from "./TotalCount"
+import TimeRangeButton from "./TimeRangeButton"
+import { ChartTooltipContent } from "./ChartTooltipContent"
+import { barChartOption } from "../utils"
+import { BarData } from "../types"
 
 interface Props {
-  graphData: any
+  graphData: {
+    title: ChartKey
+    success: Record<string, number>
+    failure: Record<string, number>
+  }
 }
 
 const BarChart = ({ graphData }: Props) => {
   const [tab, setTab] = useState(7)
 
-  const success: Record<string, number> = graphData.success
+  let data: BarData[] = []
 
-  const failure: Record<string, number> = graphData.failure
-
-  let data: any = []
-
-  if (success && failure) {
-    data = Object.keys(success).map((key) => ({
-      day: key,
-      positive: success[key],
-      negative: failure[key],
-    }))
-  }
+  data = Object.keys(graphData.success).map((key) => ({
+    day: key,
+    positive: graphData.success[key],
+    negative: graphData.failure[key],
+  }))
 
   if (tab === 7) {
     data = data.slice(7, 14)
   }
 
-  const chartData = data.map((item: any) => ({
-    name: item.day,
-    value: [item.negative, item.positive],
-  }))
-
-  const option = {
-    tooltip: {},
-    grid: {
-      left: "5%",
-      right: "5%",
-      top: "10%",
-      bottom: "10%",
-    },
-    xAxis: {
-      type: "category",
-      data: data.map((item: any) => item.day),
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        name: "Success",
-        stack: "total",
-        type: "bar",
-        data: chartData.map((item: any) => item.value[1]),
-        itemStyle: {
-          color: "#2196F3",
-        },
-      },
-      {
-        name: "Failure",
-        stack: "total",
-        type: "bar",
-        data: chartData.map((item: any) => item.value[0]),
-        itemStyle: {
-          color: "#FF5722",
-        },
-      },
-    ],
-  }
+  const option = barChartOption(data)
 
   return (
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
       <div className="flex justify-between px-10 items-center z-10">
+        {/* TITLE */}
         <h4 className="text-xl font-semibold">
           {CHART_TITLES[graphData.title]}
         </h4>
+
+        {/* TOTAL COUNT INFO */}
         <div className="flex space-x-2">
-          <div>{calculateTotalLastNDays(success, tab)}</div>
-          <div>{calculateTotalLastNDays(failure, tab)}</div>
+          <TotalCount
+            data={graphData.success}
+            n={tab}
+            bgColor="bg-chart-blue"
+          />
+          <TotalCount
+            data={graphData.failure}
+            n={tab}
+            bgColor="bg-chart-orange"
+          />
         </div>
+
+        {/* RIGHT SIDE */}
         <div className="flex items-center space-x-4">
-          <Tooltip
-            comp={
-              <div className="flex flex-col space-y-2 py-2">
-                <p>
-                  <span className="bg-[#2196F3] h-2 w-2 inline-block mr-1"></span>
-                  <span className="pr-1 font-semibold">
-                    {METRICS_TOOLTIP_INFO[graphData.title].success.title}
-                  </span>
-                  <span>
-                    {METRICS_TOOLTIP_INFO[graphData.title].success.desc}
-                  </span>
-                </p>
-                <p>
-                  <span className="bg-[#FF5722] h-2 w-2 inline-block mr-1"></span>
-                  <span className="pr-1 font-semibold">
-                    {METRICS_TOOLTIP_INFO[graphData.title].failed.title}
-                  </span>
-                  <span>
-                    {METRICS_TOOLTIP_INFO[graphData.title].failed.desc}
-                  </span>
-                </p>
-                <p>{METRICS_TOOLTIP_INFO?.[graphData.title]?.extraInfo}</p>
-              </div>
-            }
-          >
+          <Tooltip comp={<ChartTooltipContent title={graphData.title} />}>
             <InfoIcon />
           </Tooltip>
+
+          {/* TIME RANGE CHANGE BUTTONS */}
           <div>
-            <button
-              onClick={() => setTab(7)}
-              className={`text-xs bg-gray-100 px-2 py-1 ${
-                tab === 7 &&
-                "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-              }`}
-            >
-              7D
-            </button>
-            <button
-              onClick={() => setTab(14)}
-              className={`text-xs bg-gray-100 px-2 py-1 ${
-                tab === 14 &&
-                "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-              }`}
-            >
-              14D
-            </button>
+            <TimeRangeButton tab={tab} setTab={setTab} changeTab={7} />
+            <TimeRangeButton tab={tab} setTab={setTab} changeTab={14} />
           </div>
         </div>
       </div>
