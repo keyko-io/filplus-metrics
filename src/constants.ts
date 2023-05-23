@@ -1,4 +1,4 @@
-export const METRICS_TOOLTIP_INFO: any = {
+export const METRICS_TOOLTIP_INFO = {
   propose: {
     success: {
       title: "Number of successful request proposals:",
@@ -36,32 +36,40 @@ export const METRICS_TOOLTIP_INFO: any = {
   },
   githubLogin: {
     success: {
-      title: "Number of Ledger Logins:",
-      desc: "Number of times users successfully link their ledger to the dashboard.",
+      title: "Number of GitHub Logins:",
+      desc: "Number of times users successfully initiate the GitHub login process and return to the dashboard.",
     },
     failed: {
-      title: "Number of unsuccessful Ledger Logins:",
-      desc: "Number of times users fail to link their ledger to the dashboard.",
+      title: "Number of unsuccessful GitHub Logins:",
+      desc: "Number of times users fail to link their github account to the dashboard.",
     },
     extraInfo: "",
   },
   githubToken: {
     success: {
-      title: "Number of Ledger Logins:",
-      desc: "Number of times users successfully link their ledger to the dashboard.",
+      title: "Number of GitHub Tokens Loaded:",
+      desc: "Number of instances where users successfully login using a GitHub auth token, such as when a user logs in previously and re-logs into GitHub without needing to re-authenticate manually.",
     },
     failed: {
-      title: "Number of unsuccessful Ledger Logins:",
-      desc: "Number of times users fail to link their ledger to the dashboard.",
+      title: "Number of unsuccessful GitHub Tokens Loaded:",
+      desc: "Number of instances fail to load github token",
     },
     extraInfo: "",
   },
 }
 
-export const CHART_TITLES: any = {
-  propose: "Proposal",
-  approve: "Approval",
-  ledgerLogin: "Ledger Login",
-  githubLogin: "Github Login",
-  githubToken: "Github Token Load",
+export enum ChartKey {
+  Propose = "propose",
+  Approve = "approve",
+  LedgerLogin = "ledgerLogin",
+  GithubLogin = "githubLogin",
+  GithubToken = "githubToken",
+}
+
+export const CHART_TITLES: Record<ChartKey, string> = {
+  [ChartKey.Propose]: "Proposal",
+  [ChartKey.Approve]: "Approval",
+  [ChartKey.LedgerLogin]: "Ledger Login",
+  [ChartKey.GithubLogin]: "Github Login",
+  [ChartKey.GithubToken]: "Github Token Load",
 }
