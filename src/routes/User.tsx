@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetchNewData } from "../api"
 import BarChart from "../components/BarChart"
+import { ChartDataResponse } from "../types"
+import { ChartKey } from "../constants"
 
 const User = () => {
   const chartData = useQuery({
@@ -10,39 +12,39 @@ const User = () => {
 
   if (chartData.isLoading) return "loading..."
 
-  const { response } = chartData.data
+  const { response }: { response: ChartDataResponse } = chartData.data
 
   const ledgerLoginSuccessful = response["Ledger Login Successful"]
   const ledgerLoginFailed = response["Ledger Login Failed"]
 
   const githubLoginSuccessful = response["Github Login Success"]
-  const githubloginFailed: any = {}
+  const githubLoginFailed: Record<string, number> = {}
 
   for (const key in githubLoginSuccessful) {
-    githubloginFailed[key] = 0
+    githubLoginFailed[key] = 0
   }
 
-  const githubTokenSuccesful = response["Loaded Github Token Successfully"]
-  const githubTokenFailed: any = {}
+  const githubTokenSuccessful = response["Loaded Github Token Successfully"]
+  const githubTokenFailed: Record<string, number> = {}
 
-  for (const key in githubTokenSuccesful) {
+  for (const key in githubTokenSuccessful) {
     githubTokenFailed[key] = 0
   }
 
   const userData = [
     {
-      title: "ledgerLogin",
+      title: ChartKey.LedgerLogin,
       success: ledgerLoginSuccessful,
       failure: ledgerLoginFailed,
     },
     {
-      title: "githubLogin",
+      title: ChartKey.GithubLogin,
       success: githubLoginSuccessful,
-      failure: githubloginFailed,
+      failure: githubLoginFailed,
     },
     {
-      title: "githubToken",
-      success: githubTokenSuccesful,
+      title: ChartKey.GithubToken,
+      success: githubTokenSuccessful,
       failure: githubTokenFailed,
     },
   ]
