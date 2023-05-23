@@ -1,11 +1,20 @@
 export enum SentryDataPeriods {
-    OneDay = "24h",
-    SevenDays = "7d",
-    TwoWeeks = "14d",
+  OneDay = "24h",
+  SevenDays = "7d",
+  TwoWeeks = "14d",
 }
 
 export enum SentryDataTypes {
-    LoginStats = "login",
-    SigningStats = "tx",
+  LoginStats = "login",
+  SigningStats = "tx",
 }
 
+export type ChartDataResponse = {
+  [key: string]: Record<string, number>
+}
+
+export type BarData = {
+  day: string
+  positive: number
+  negative: number
+}
