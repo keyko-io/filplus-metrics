@@ -16,7 +16,7 @@ function Root() {
 
       <main className="bg-[#E7E7E7] flex-1 px-8 py-6 ml-64 min-h-screen">
         <div className="max-w-[1200px] mx-auto">
-          <div className="bg-white rounded-md p-4 shadow-md mb-4">
+          <div className="bg-white rounded-md px-12 py-4 shadow-md mb-4">
             {bugsQuery.isLoading ? (
               "Loading..."
             ) : (

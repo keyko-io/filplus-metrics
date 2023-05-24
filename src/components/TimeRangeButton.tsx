@@ -10,7 +10,7 @@ const TimeRangeButton = ({ tab, setTab, changeTab }: Props) => {
       onClick={() => setTab(changeTab)}
       className={`text-xs bg-gray-100 px-2 py-1 ${
         tab === changeTab &&
-        "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+        "bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition duration-300"
       }`}
     >
       {changeTab + "D"}
