@@ -1,3 +1,5 @@
+import { ChartKey } from "./types"
+
 export const METRICS_TOOLTIP_INFO = {
   propose: {
     success: {
@@ -56,14 +58,6 @@ export const METRICS_TOOLTIP_INFO = {
     },
     extraInfo: "",
   },
-}
-
-export enum ChartKey {
-  Propose = "propose",
-  Approve = "approve",
-  LedgerLogin = "ledgerLogin",
-  GithubLogin = "githubLogin",
-  GithubToken = "githubToken",
 }
 
 export const CHART_TITLES: Record<ChartKey, string> = {

@@ -2,27 +2,21 @@ import ReactEcharts from "echarts-for-react"
 import { InfoIcon } from "../icons"
 import Tooltip from "./Tooltip"
 import { useState } from "react"
-import { CHART_TITLES, ChartKey } from "../constants"
+import { CHART_TITLES } from "../constants"
 import TotalCount from "./TotalCount"
 import TimeRangeButton from "./TimeRangeButton"
 import { ChartTooltipContent } from "./ChartTooltipContent"
 import { barChartOption } from "../utils"
-import { BarData } from "../types"
+import { BarData, GraphData } from "../types"
 
 interface Props {
-  graphData: {
-    title: ChartKey
-    success: Record<string, number>
-    failure: Record<string, number>
-  }
+  graphData: GraphData
 }
 
 const BarChart = ({ graphData }: Props) => {
   const [tab, setTab] = useState(7)
 
-  let data: BarData[] = []
-
-  data = Object.keys(graphData.success).map((key) => ({
+  let data: BarData[] = Object.keys(graphData.success).map((key) => ({
     day: key,
     positive: graphData.success[key],
     negative: graphData.failure[key],

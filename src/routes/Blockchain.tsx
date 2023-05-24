@@ -1,39 +1,42 @@
 import BarChart from "../components/BarChart"
-import { fetchNewData } from "../api"
+import { fetchSentryEvents } from "../api"
 import { useQuery } from "@tanstack/react-query"
-import { ChartDataResponse } from "../types"
-import { ChartKey } from "../constants"
 import ChaartSkeletonWrapper from "../components/ChartSkeleton"
+import { GraphData, ChartKey } from "../types"
 
 const Blockchain = () => {
   const chartData = useQuery({
     queryKey: ["chart"],
-    queryFn: fetchNewData,
+    queryFn: fetchSentryEvents,
   })
 
   if (chartData.isLoading) return <ChaartSkeletonWrapper />
 
-  const response: ChartDataResponse = chartData.data
+  const response = chartData.data
 
-  const {
-    "Request Approved": requestApproved,
-    "Approval Failed": approvalFailed,
-    "Request Proposed": requestProposed,
-    "Proposal Failed": proposalFailed,
-  } = response
+  let blockchainData: GraphData[] = []
 
-  const blockchainData = [
-    {
-      title: ChartKey.Propose,
-      success: requestProposed,
-      failure: proposalFailed,
-    },
-    {
-      title: ChartKey.Approve,
-      success: requestApproved,
-      failure: approvalFailed,
-    },
-  ]
+  if (response) {
+    const {
+      "Request Approved": requestApproved,
+      "Approval Failed": approvalFailed,
+      "Request Proposed": requestProposed,
+      "Proposal Failed": proposalFailed,
+    } = response
+
+    blockchainData = [
+      {
+        title: ChartKey.Propose,
+        success: requestProposed,
+        failure: proposalFailed,
+      },
+      {
+        title: ChartKey.Approve,
+        success: requestApproved,
+        failure: approvalFailed,
+      },
+    ]
+  }
 
   return (
     <div className="flex flex-col space-y-4">

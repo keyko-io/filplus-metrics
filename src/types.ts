@@ -18,3 +18,17 @@ export type BarData = {
   positive: number
   negative: number
 }
+
+export enum ChartKey {
+  Propose = "propose",
+  Approve = "approve",
+  LedgerLogin = "ledgerLogin",
+  GithubLogin = "githubLogin",
+  GithubToken = "githubToken",
+}
+
+export type GraphData = {
+  title: ChartKey
+  success: Record<string, number>
+  failure: Record<string, number>
+}

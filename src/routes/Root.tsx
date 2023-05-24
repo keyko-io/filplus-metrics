@@ -22,7 +22,7 @@ function Root() {
             ) : (
               <div className="flex items-center space-x-4 ">
                 <BugIcon />
-                <div> Number of open bugs : {bugsQuery.data.count}</div>
+                <div> Number of open bugs : {bugsQuery?.data?.count}</div>
               </div>
             )}
           </div>
