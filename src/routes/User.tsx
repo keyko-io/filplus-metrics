@@ -3,6 +3,7 @@ import { fetchNewData } from "../api"
 import BarChart from "../components/BarChart"
 import { ChartDataResponse } from "../types"
 import { ChartKey } from "../constants"
+import ChaartSkeletonWrapper from "../components/ChartSkeleton"
 
 const User = () => {
   const chartData = useQuery({
@@ -10,19 +11,15 @@ const User = () => {
     queryFn: fetchNewData,
   })
 
-  if (chartData.isLoading) return "loading..."
+  if (chartData.isLoading) return <ChaartSkeletonWrapper />
 
-  const { response }: { response: ChartDataResponse } = chartData.data
+  const response: ChartDataResponse = chartData.data
 
   const ledgerLoginSuccessful = response["Ledger Login Successful"]
   const ledgerLoginFailed = response["Ledger Login Failed"]
 
   const githubLoginSuccessful = response["Github Login Success"]
-  const githubLoginFailed: Record<string, number> = {}
-
-  for (const key in githubLoginSuccessful) {
-    githubLoginFailed[key] = 0
-  }
+  const githubLoginFailed = response["Github Login Failed"]
 
   const githubTokenSuccessful = response["Loaded Github Token Successfully"]
   const githubTokenFailed: Record<string, number> = {}

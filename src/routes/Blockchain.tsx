@@ -3,6 +3,7 @@ import { fetchNewData } from "../api"
 import { useQuery } from "@tanstack/react-query"
 import { ChartDataResponse } from "../types"
 import { ChartKey } from "../constants"
+import ChaartSkeletonWrapper from "../components/ChartSkeleton"
 
 const Blockchain = () => {
   const chartData = useQuery({
@@ -10,9 +11,9 @@ const Blockchain = () => {
     queryFn: fetchNewData,
   })
 
-  if (chartData.isLoading) return "loading..."
+  if (chartData.isLoading) return <ChaartSkeletonWrapper />
 
-  const { response }: { response: ChartDataResponse } = chartData.data
+  const response: ChartDataResponse = chartData.data
 
   const {
     "Request Approved": requestApproved,
