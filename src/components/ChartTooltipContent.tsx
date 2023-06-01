@@ -1,9 +1,9 @@
-import { METRICS_TOOLTIP_INFO } from "../constants"
-import { ChartKey } from "../types"
-import Square from "./Square"
+import { METRICS_TOOLTIP_INFO } from "../constants";
+import { ChartKey } from "../types";
+import Square from "./Square";
 
 interface Props {
-  title: ChartKey
+  title: ChartKey;
 }
 
 export const ChartTooltipContent = ({ title }: Props) => {
@@ -25,5 +25,5 @@ export const ChartTooltipContent = ({ title }: Props) => {
       </p>
       <p>{METRICS_TOOLTIP_INFO?.[title]?.extraInfo}</p>
     </div>
-  )
-}
+  );
+};
