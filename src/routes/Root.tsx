@@ -1,14 +1,14 @@
-import { Outlet } from "react-router-dom"
-import { BugIcon } from "../icons"
-import { useQuery } from "@tanstack/react-query"
-import { getOpenBugsCount } from "../api"
-import SideBar from "../components/SideBar"
+import { Outlet } from "react-router-dom";
+import { BugIcon } from "../icons";
+import { useQuery } from "@tanstack/react-query";
+import { getOpenBugsCount } from "../api";
+import SideBar from "../components/SideBar";
 
 function Root() {
   const bugsQuery = useQuery({
     queryKey: ["bugs"],
-    queryFn: getOpenBugsCount,
-  })
+    queryFn: getOpenBugsCount
+  });
 
   return (
     <section className="flex">
@@ -31,7 +31,7 @@ function Root() {
         </div>
       </main>
     </section>
-  )
+  );
 }
 
-export default Root
+export default Root;

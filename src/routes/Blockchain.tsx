@@ -1,50 +1,50 @@
-import BarChart from "../components/BarChart"
-import { fetchSentryEvents } from "../api"
-import { useQuery } from "@tanstack/react-query"
-import ChaartSkeletonWrapper from "../components/ChartSkeleton"
-import { GraphData, ChartKey } from "../types"
+import BarChart from "../components/BarChart";
+import { fetchSentryEvents } from "../api";
+import { useQuery } from "@tanstack/react-query";
+import ChaartSkeletonWrapper from "../components/ChartSkeleton";
+import { GraphData, ChartKey } from "../types";
 
 const Blockchain = () => {
   const chartData = useQuery({
     queryKey: ["chart"],
-    queryFn: fetchSentryEvents,
-  })
+    queryFn: fetchSentryEvents
+  });
 
-  if (chartData.isLoading) return <ChaartSkeletonWrapper />
+  if (chartData.isLoading) return <ChaartSkeletonWrapper />;
 
-  const response = chartData.data
+  const response = chartData.data;
 
-  let blockchainData: GraphData[] = []
+  let blockchainData: GraphData[] = [];
 
   if (response) {
     const {
       "Request Approved": requestApproved,
       "Approval Failed": approvalFailed,
       "Request Proposed": requestProposed,
-      "Proposal Failed": proposalFailed,
-    } = response
+      "Proposal Failed": proposalFailed
+    } = response;
 
     blockchainData = [
       {
         title: ChartKey.Propose,
         success: requestProposed,
-        failure: proposalFailed,
+        failure: proposalFailed
       },
       {
         title: ChartKey.Approve,
         success: requestApproved,
-        failure: approvalFailed,
-      },
-    ]
+        failure: approvalFailed
+      }
+    ];
   }
 
   return (
     <div className="flex flex-col space-y-4">
-      {blockchainData.map((item) => (
+      {blockchainData.map(item => (
         <BarChart graphData={item} key={item.title} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Blockchain
+export default Blockchain;
