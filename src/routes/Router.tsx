@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import Root from "./Root";
 import Blockchain from "./Blockchain";
 import User from "./User";
 import About from "./About";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
