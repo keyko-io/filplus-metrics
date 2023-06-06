@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         "chart-blue": "#2196F3",
-        "chart-orange": "#FF5722",
-      },
-    },
+        "chart-orange": "#FF5722"
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};

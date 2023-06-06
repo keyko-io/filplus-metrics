@@ -1,9 +1,9 @@
 const Tooltip = ({
   comp,
-  children,
+  children
 }: {
-  comp: string | React.ReactNode
-  children: React.ReactNode
+  comp: string | React.ReactNode;
+  children: React.ReactNode;
 }) => {
   return (
     <div className="relative group">
@@ -12,7 +12,7 @@ const Tooltip = ({
         <div className="min-w-[30rem]">{comp}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tooltip
+export default Tooltip;

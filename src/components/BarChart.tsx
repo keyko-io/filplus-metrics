@@ -1,32 +1,32 @@
-import ReactEcharts from "echarts-for-react"
-import { InfoIcon } from "../icons"
-import Tooltip from "./Tooltip"
-import { useState } from "react"
-import { CHART_TITLES } from "../constants"
-import TotalCount from "./TotalCount"
-import TimeRangeButton from "./TimeRangeButton"
-import { ChartTooltipContent } from "./ChartTooltipContent"
-import { barChartOption } from "../utils"
-import { BarData, GraphData } from "../types"
+import ReactEcharts from "echarts-for-react";
+import { InfoIcon } from "../icons";
+import Tooltip from "./Tooltip";
+import { useState } from "react";
+import { CHART_TITLES } from "../constants";
+import TotalCount from "./TotalCount";
+import TimeRangeButton from "./TimeRangeButton";
+import { ChartTooltipContent } from "./ChartTooltipContent";
+import { barChartOption } from "../utils";
+import { BarData, GraphData } from "../types";
 
 interface Props {
-  graphData: GraphData
+  graphData: GraphData;
 }
 
 const BarChart = ({ graphData }: Props) => {
-  const [tab, setTab] = useState(7)
+  const [tab, setTab] = useState(7);
 
-  let data: BarData[] = Object.keys(graphData.success).map((key) => ({
+  let data: BarData[] = Object.keys(graphData.success).map(key => ({
     day: key,
     positive: graphData.success[key],
-    negative: graphData.failure[key],
-  }))
+    negative: graphData.failure[key]
+  }));
 
   if (tab === 7) {
-    data = data.slice(7, 14)
+    data = data.slice(7, 14);
   }
 
-  const option = barChartOption(data)
+  const option = barChartOption(data);
 
   return (
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
@@ -66,7 +66,7 @@ const BarChart = ({ graphData }: Props) => {
 
       <ReactEcharts option={option} />
     </div>
-  )
-}
+  );
+};
 
-export default BarChart
+export default BarChart;

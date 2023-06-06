@@ -1,19 +1,19 @@
-import { NavLink, Link } from "react-router-dom"
-import logo from "../assets/fil-plus.svg"
-import { CubeIcon, UserIcon } from "../icons"
+import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/fil-plus.svg";
+import { CubeIcon, UserIcon } from "../icons";
 
 const navigationItems = [
   {
     name: "Blockchain",
     to: "",
-    svg: <CubeIcon />,
+    svg: <CubeIcon />
   },
   {
     name: "User",
     to: "user",
-    svg: <UserIcon />,
-  },
-]
+    svg: <UserIcon />
+  }
+];
 
 const SideBar = () => {
   return (
@@ -27,7 +27,7 @@ const SideBar = () => {
       </NavLink>
 
       <div className="flex flex-col flex-1 px-5">
-        {navigationItems.map((item) => {
+        {navigationItems.map(item => {
           return (
             <NavLink
               key={item.name}
@@ -42,7 +42,7 @@ const SideBar = () => {
               <span>{item.svg}</span>
               <span>{item.name}</span>
             </NavLink>
-          )
+          );
         })}
       </div>
 
@@ -51,7 +51,7 @@ const SideBar = () => {
         <span>About Fil+ Metrics</span>
       </Link>
     </nav>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

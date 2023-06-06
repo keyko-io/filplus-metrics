@@ -17,8 +17,8 @@ const ChartSkeleton = () => {
         <div className="flex-1 h-full bg-gray-300 animate-pulse"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const ChaartSkeletonWrapper = () => {
   return (
@@ -26,7 +26,7 @@ const ChaartSkeletonWrapper = () => {
       <ChartSkeleton />
       <ChartSkeleton />
     </div>
-  )
-}
+  );
+};
 
-export default ChaartSkeletonWrapper
+export default ChaartSkeletonWrapper;

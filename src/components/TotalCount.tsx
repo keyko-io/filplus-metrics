@@ -1,10 +1,10 @@
-import { calculateTotalLastNDays } from "../utils"
-import Square from "./Square"
+import { calculateTotalLastNDays } from "../utils";
+import Square from "./Square";
 
 interface Props {
-  data: Record<string, number>
-  n: number
-  bgColor: string
+  data: Record<string, number>;
+  n: number;
+  bgColor: string;
 }
 
 const TotalCount = ({ data, n, bgColor }: Props) => {
@@ -13,7 +13,7 @@ const TotalCount = ({ data, n, bgColor }: Props) => {
       <Square bgColor={bgColor} />
       Total count : {calculateTotalLastNDays(data, n)}
     </div>
-  )
-}
+  );
+};
 
-export default TotalCount
+export default TotalCount;

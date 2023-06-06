@@ -1,7 +1,7 @@
 interface Props {
-  tab: number
-  setTab: (value: React.SetStateAction<number>) => void
-  changeTab: number
+  tab: number;
+  setTab: (value: React.SetStateAction<number>) => void;
+  changeTab: number;
 }
 
 const TimeRangeButton = ({ tab, setTab, changeTab }: Props) => {
@@ -15,7 +15,7 @@ const TimeRangeButton = ({ tab, setTab, changeTab }: Props) => {
     >
       {changeTab + "D"}
     </button>
-  )
-}
+  );
+};
 
-export default TimeRangeButton
+export default TimeRangeButton;
