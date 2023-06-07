@@ -1,14 +1,10 @@
 import BarChart from "../components/BarChart";
-import { fetchSentryEvents } from "../api";
-import { useQuery } from "@tanstack/react-query";
 import ChaartSkeletonWrapper from "../components/ChartSkeleton";
 import { GraphData, ChartKey } from "../types";
+import useSentryData from "../hooks/useSentryData";
 
 const Blockchain = () => {
-  const chartData = useQuery({
-    queryKey: ["chart"],
-    queryFn: fetchSentryEvents
-  });
+  const chartData = useSentryData();
 
   if (chartData.isLoading) return <ChaartSkeletonWrapper />;
 

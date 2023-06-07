@@ -1,14 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchSentryEvents } from "../api";
 import BarChart from "../components/BarChart";
 import { GraphData, ChartKey } from "../types";
 import ChaartSkeletonWrapper from "../components/ChartSkeleton";
+import useSentryData from "../hooks/useSentryData";
 
 const User = () => {
-  const chartData = useQuery({
-    queryKey: ["chart"],
-    queryFn: fetchSentryEvents
-  });
+  const chartData = useSentryData();
 
   if (chartData.isLoading) return <ChaartSkeletonWrapper />;
 
