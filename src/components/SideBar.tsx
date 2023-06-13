@@ -46,8 +46,7 @@ const SideBar = () => {
         })}
       </div>
 
-      {/* THIS WILL BE IN PROGRESS SOON THAST WHY ROUTE = "/" */}
-      <Link to="/" className="border-t text-center py-4">
+      <Link to="/about" className="border-t text-center py-4">
         <span>About Fil+ Metrics</span>
       </Link>
     </nav>
