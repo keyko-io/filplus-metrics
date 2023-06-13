@@ -1,3 +1,5 @@
+import logo from "../assets/fil-plus-white.svg";
+
 const About = () => {
   const listItems = [
     "Enhance Transparency and Maintain Standards: This public dashboard serves as a transparent platform, allowing us to showcase the performance of Fil+ tooling. In the event of bugs or service interruptions, any drop in activity will be clearly visible here.",
@@ -10,8 +12,12 @@ const About = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-gradient-to-r from-filecoin-blue to-[#39c1cb] h-[300px] text-white  flex items-center ">
-        <div className="container mx-auto font-bold text-3xl tracking-wide">
+      <div className="bg-gradient-to-r from-filecoin-blue to-[#39c1cb] h-[300px] text-white flex flex-col">
+        <div className="container mx-auto -translate-x-8 mt-6">
+          <img src={logo} alt="" className="h-20" />
+        </div>
+
+        <div className="container mx-auto font-bold text-3xl tracking-wide mt-6">
           About Fil+ Metrics
         </div>
       </div>
