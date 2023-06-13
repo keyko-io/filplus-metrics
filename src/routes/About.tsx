@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/fil-plus-white.svg";
 
 const About = () => {
@@ -13,9 +14,9 @@ const About = () => {
   return (
     <div className="flex flex-col">
       <div className="bg-gradient-to-r from-filecoin-blue to-[#39c1cb] h-[300px] text-white flex flex-col">
-        <div className="container mx-auto -translate-x-8 mt-6">
+        <Link to="/" className="container mx-auto -translate-x-8 mt-6">
           <img src={logo} alt="" className="h-20" />
-        </div>
+        </Link>
 
         <div className="container mx-auto font-bold text-3xl tracking-wide mt-6">
           About Fil+ Metrics
