@@ -24,7 +24,8 @@ export enum ChartKey {
   Approve = "approve",
   LedgerLogin = "ledgerLogin",
   GithubLogin = "githubLogin",
-  GithubToken = "githubToken"
+  GithubToken = "githubToken",
+  Bugs = "bugs"
 }
 
 export type GraphData = {

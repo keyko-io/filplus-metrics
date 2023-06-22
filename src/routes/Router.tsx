@@ -3,6 +3,7 @@ import Root from "./Root";
 import Blockchain from "./Blockchain";
 import User from "./User";
 import About from "./About";
+import Bugs from "./Bugs";
 
 export const router = createHashRouter([
   {
@@ -16,6 +17,10 @@ export const router = createHashRouter([
       {
         path: "user",
         element: <User />
+      },
+      {
+        path: "bugs",
+        element: <Bugs />
       }
     ]
   },

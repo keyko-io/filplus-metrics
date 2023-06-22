@@ -26,7 +26,7 @@ const BarChart = ({ graphData }: Props) => {
     data = data.slice(7, 14);
   }
 
-  const option = barChartOption(data);
+  const option = barChartOption(data, graphData.title);
 
   return (
     <div className="bg-white rounded-md flex flex-col p-4 shadow-md">
@@ -40,6 +40,7 @@ const BarChart = ({ graphData }: Props) => {
         <div className="flex space-x-2">
           <TotalCount
             data={graphData.success}
+            title={graphData.title === "bugs" ? "Total opened bugs : " : ""}
             n={tab}
             bgColor="bg-chart-blue"
           />
@@ -47,14 +48,17 @@ const BarChart = ({ graphData }: Props) => {
             data={graphData.failure}
             n={tab}
             bgColor="bg-chart-orange"
+            title={graphData.title === "bugs" ? "Total closed bugs : " : ""}
           />
         </div>
 
         {/* RIGHT SIDE */}
         <div className="flex items-center space-x-4">
-          <Tooltip comp={<ChartTooltipContent title={graphData.title} />}>
-            <InfoIcon />
-          </Tooltip>
+          {graphData.title !== "bugs" && (
+            <Tooltip comp={<ChartTooltipContent title={graphData.title} />}>
+              <InfoIcon />
+            </Tooltip>
+          )}
 
           {/* TIME RANGE CHANGE BUTTONS */}
           <div>
