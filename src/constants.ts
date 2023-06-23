@@ -57,6 +57,17 @@ export const METRICS_TOOLTIP_INFO = {
       desc: "Number of instances fail to load github token"
     },
     extraInfo: ""
+  },
+  bugs: {
+    success: {
+      title: "",
+      desc: ""
+    },
+    failed: {
+      title: "",
+      desc: ""
+    },
+    extraInfo: ""
   }
 };
 
@@ -65,5 +76,6 @@ export const CHART_TITLES: Record<ChartKey, string> = {
   [ChartKey.Approve]: "Approval",
   [ChartKey.LedgerLogin]: "Ledger Login",
   [ChartKey.GithubLogin]: "Github Login",
-  [ChartKey.GithubToken]: "Github Token Load"
+  [ChartKey.GithubToken]: "Github Token Load",
+  [ChartKey.Bugs]: "Bugs"
 };

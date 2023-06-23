@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/fil-plus.svg";
-import { CubeIcon, UserIcon } from "../icons";
+import { BugIcon, CubeIcon, UserIcon } from "../icons";
 
 const navigationItems = [
   {
@@ -12,6 +12,11 @@ const navigationItems = [
     name: "User",
     to: "user",
     svg: <UserIcon />
+  },
+  {
+    name: "Bugs",
+    to: "bugs",
+    svg: <BugIcon />
   }
 ];
 

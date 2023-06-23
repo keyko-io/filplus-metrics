@@ -31,7 +31,7 @@ export const fetchSentryEvents = async (): Promise<ChartDataResponse> => {
   }
 };
 
-export const getOpenBugsCount = async (): Promise<{ count: number }> => {
+export const getOpenBugsCount = async () => {
   try {
     const url = `${config.apiUri}/stats/bugs/open`;
     const res = await axios.get(url);
