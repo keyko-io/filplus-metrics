@@ -65,5 +65,6 @@ export const CHART_TITLES: Record<ChartKey, string> = {
   [ChartKey.Approve]: "Approval",
   [ChartKey.LedgerLogin]: "Ledger Login",
   [ChartKey.GithubLogin]: "Github Login",
-  [ChartKey.GithubToken]: "Github Token Load"
+  [ChartKey.GithubToken]: "Github Token Load",
+  [ChartKey.Bugs]: "Bugs"
 };

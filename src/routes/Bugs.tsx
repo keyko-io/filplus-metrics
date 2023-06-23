@@ -10,13 +10,14 @@ const Bugs = () => {
     queryFn: getOpenBugsCount
   });
 
-  if (bugsQuery.isLoading) return <ChaartSkeletonWrapper />;
+  if (bugsQuery.isLoading) return <ChaartSkeletonWrapper page="bugs" />;
 
   const graphData = {
     title: ChartKey.Bugs,
     success: bugsQuery.data.opened,
     failure: bugsQuery.data.closed
   };
+
   return <BarChart graphData={graphData} key={graphData.title} />;
 };
 
