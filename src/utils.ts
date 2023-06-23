@@ -15,7 +15,7 @@ export const calculateTotalLastNDays = (
   return lastNDaysValues.reduce((acc: number, value: number) => acc + value, 0);
 };
 
-export const barChartOption = (data: BarData[]) => {
+export const barChartOption = (data: BarData[], title?: string) => {
   return {
     tooltip: {},
     grid: {
@@ -33,7 +33,7 @@ export const barChartOption = (data: BarData[]) => {
     },
     series: [
       {
-        name: "Success",
+        name: title === "bugs" ? "Opened" : "Success",
         stack: "total",
         type: "bar",
         data: data.map(item => item.positive),
@@ -42,7 +42,7 @@ export const barChartOption = (data: BarData[]) => {
         }
       },
       {
-        name: "Failure",
+        name: title === "bugs" ? "Closed" : "Success",
         stack: "total",
         type: "bar",
         data: data.map(item => item.negative),

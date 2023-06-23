@@ -5,13 +5,15 @@ interface Props {
   data: Record<string, number>;
   n: number;
   bgColor: string;
+  title?: string;
 }
 
-const TotalCount = ({ data, n, bgColor }: Props) => {
+const TotalCount = ({ data, n, bgColor, title }: Props) => {
   return (
     <div className="flex items-center text-xs">
       <Square bgColor={bgColor} />
-      Total count : {calculateTotalLastNDays(data, n)}
+      {title || "Total count : "}
+      {calculateTotalLastNDays(data, n)}
     </div>
   );
 };

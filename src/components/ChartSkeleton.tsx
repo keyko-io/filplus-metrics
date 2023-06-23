@@ -20,11 +20,15 @@ const ChartSkeleton = () => {
   );
 };
 
-const ChaartSkeletonWrapper = () => {
+interface Props {
+  page?: string;
+}
+
+const ChaartSkeletonWrapper = ({ page }: Props) => {
   return (
     <div className="flex flex-col space-y-4">
       <ChartSkeleton />
-      <ChartSkeleton />
+      {page !== "bugs" && <ChartSkeleton />}
     </div>
   );
 };
