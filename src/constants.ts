@@ -57,6 +57,17 @@ export const METRICS_TOOLTIP_INFO = {
       desc: "Number of instances fail to load github token"
     },
     extraInfo: ""
+  },
+  bugs: {
+    success: {
+      title: "",
+      desc: ""
+    },
+    failed: {
+      title: "",
+      desc: ""
+    },
+    extraInfo: ""
   }
 };
 
