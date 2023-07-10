@@ -54,11 +54,9 @@ const BarChart = ({ graphData }: Props) => {
 
         {/* RIGHT SIDE */}
         <div className="flex items-center space-x-4">
-          {graphData.title !== "bugs" && (
-            <Tooltip comp={<ChartTooltipContent title={graphData.title} />}>
-              <InfoIcon />
-            </Tooltip>
-          )}
+          <Tooltip comp={<ChartTooltipContent title={graphData.title} />}>
+            <InfoIcon />
+          </Tooltip>
 
           {/* TIME RANGE CHANGE BUTTONS */}
           <div>
