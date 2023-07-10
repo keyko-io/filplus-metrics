@@ -10,6 +10,7 @@ const Bugs = () => {
     queryFn: getOpenBugsCount
   });
 
+  if (bugsQuery.error) return "Something went wrong";
   if (bugsQuery.isLoading) return <ChaartSkeletonWrapper page="bugs" />;
 
   const graphData = {

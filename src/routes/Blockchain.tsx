@@ -6,6 +6,7 @@ import useSentryData from "../hooks/useSentryData";
 const Blockchain = () => {
   const chartData = useSentryData();
 
+  if (chartData.error) return "Something went wrong";
   if (chartData.isLoading) return <ChaartSkeletonWrapper />;
 
   const response = chartData.data;
