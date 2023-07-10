@@ -42,7 +42,7 @@ export const barChartOption = (data: BarData[], title?: string) => {
         }
       },
       {
-        name: title === "bugs" ? "Closed" : "Success",
+        name: title === "bugs" ? "Closed" : "Failure",
         stack: "total",
         type: "bar",
         data: data.map(item => item.negative),

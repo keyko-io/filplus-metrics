@@ -60,12 +60,12 @@ export const METRICS_TOOLTIP_INFO = {
   },
   bugs: {
     success: {
-      title: "",
-      desc: ""
+      title: "Number of bugs opened:",
+      desc: "Number of issues labelled as 'bug' that are closed in the frontend-verfier repo."
     },
     failed: {
-      title: "",
-      desc: ""
+      title: "Number of bugs closed",
+      desc: "Number of issues labelled as 'bug' that are closed in the frontend-verfier repo."
     },
     extraInfo: ""
   }

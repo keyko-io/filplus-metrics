@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  SentryDataTypes,
-  SentryDataPeriods,
-  ChartDataResponse
-} from "../types";
+import { SentryDataTypes, SentryDataPeriods } from "../types";
 import { formatSentryURL } from "../utils";
 import { config } from "../config";
 
@@ -17,17 +13,16 @@ export const fetchSentryData = async (
 
     return response.data;
   } catch (error) {
-    console.error(error);
-    return {};
+    //console.log(error);
   }
 };
 
-export const fetchSentryEvents = async (): Promise<ChartDataResponse> => {
+export const fetchSentryEvents = async () => {
   try {
     const response = await axios.get(`${config.apiUri}/stats/sentry/events`);
     return response.data;
   } catch (error) {
-    return {};
+    //console.log(error);
   }
 };
 
@@ -37,7 +32,6 @@ export const getOpenBugsCount = async () => {
     const res = await axios.get(url);
     return res.data;
   } catch (error) {
-    console.log(error);
-    return { count: 0 };
+    //console.log(error);
   }
 };
