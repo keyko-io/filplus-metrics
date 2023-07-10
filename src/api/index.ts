@@ -13,7 +13,7 @@ export const fetchSentryData = async (
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
@@ -22,7 +22,7 @@ export const fetchSentryEvents = async () => {
     const response = await axios.get(`${config.apiUri}/stats/sentry/events`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
 
@@ -32,6 +32,6 @@ export const getOpenBugsCount = async () => {
     const res = await axios.get(url);
     return res.data;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 };
