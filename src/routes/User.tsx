@@ -6,6 +6,7 @@ import useSentryData from "../hooks/useSentryData";
 const User = () => {
   const chartData = useSentryData();
 
+  if (chartData.error) return "Something went wrong";
   if (chartData.isLoading) return <ChaartSkeletonWrapper />;
 
   const response = chartData.data;
