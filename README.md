@@ -34,6 +34,18 @@ To run the project locally, follow these steps:
 4. Start the development server: `npm run dev`
 5. Open a web browser and go to `http://localhost:5173/` to access the application.
 
+## Configuration
+
+To run the project, you need to set the following environment variable:
+
+- `VITE_API_URI`: The backend API URI for establishing the connection.
+
+You can set the environment variable by creating a `.env` file in the root directory of the project and adding the following line:
+
+```
+VITE_API_URI=https://test.verification.rocks
+```
+
 ## Contributing
 
 We welcome contributions from the community! To contribute to the project, please follow these steps:
