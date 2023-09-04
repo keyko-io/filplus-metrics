@@ -31,3 +31,20 @@ export interface GraphData {
   success: Record<string, number>;
   failure: Record<string, number>;
 }
+
+export enum ServiceStatus {
+  Online = "online",
+  Offline = "offline",
+  Checking = "checking"
+}
+
+export interface ServiceStatusProps {
+  name: string;
+  status: ServiceStatus;
+}
+
+export type Validator = (data: Response) => Promise<boolean>;
+
+export interface CheckServiceStatusOptions {
+  apiKey?: string;
+}
