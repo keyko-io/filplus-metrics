@@ -3,10 +3,12 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "standard-with-typescript",
+    "plugin:prettier/recommended",
   ],
   parser: "@typescript-eslint/parser",
-  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  parserOptions: { ecmaVersion: "latest", sourceType: "module", project: "./tsconfig.json" },
   plugins: ["react-refresh"],
   rules: {
     "react-refresh/only-export-components": "warn"
