@@ -5,12 +5,19 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "standard-with-typescript",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   parser: "@typescript-eslint/parser",
-  parserOptions: { ecmaVersion: "latest", sourceType: "module", project: "./tsconfig.json" },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: "./tsconfig.json"
+  },
   plugins: ["react-refresh"],
   rules: {
-    "react-refresh/only-export-components": "warn"
+    "react-refresh/only-export-components": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
   }
 };

@@ -1,6 +1,6 @@
 import BarChart from "../components/BarChart";
 import ChaartSkeletonWrapper from "../components/ChartSkeleton";
-import { GraphData, ChartKey } from "../types";
+import { type GraphData, ChartKey } from "../types";
 import useSentryData from "../hooks/useSentryData";
 
 const Blockchain = () => {

@@ -1,4 +1,4 @@
-import { BarData, SentryDataTypes } from "./types";
+import { type BarData, type SentryDataTypes } from "./types";
 import { config } from "./config";
 
 export const formatSentryURL = (period: string, type: SentryDataTypes) => {
