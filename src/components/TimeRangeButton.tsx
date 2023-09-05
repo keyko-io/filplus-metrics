@@ -7,13 +7,15 @@ interface Props {
 const TimeRangeButton = ({ tab, setTab, changeTab }: Props) => {
   return (
     <button
-      onClick={() => setTab(changeTab)}
+      onClick={() => {
+        setTab(changeTab);
+      }}
       className={`text-xs bg-gray-100 px-2 py-1 ${
         tab === changeTab &&
         "bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition duration-300"
       }`}
     >
-      {changeTab + "D"}
+      {changeTab.toString() + "D"}
     </button>
   );
 };

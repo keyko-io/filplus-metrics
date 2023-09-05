@@ -7,7 +7,7 @@ import TotalCount from "./TotalCount";
 import TimeRangeButton from "./TimeRangeButton";
 import { ChartTooltipContent } from "./ChartTooltipContent";
 import { barChartOption } from "../utils";
-import { BarData, GraphData } from "../types";
+import { type BarData, type GraphData } from "../types";
 
 interface Props {
   graphData: GraphData;

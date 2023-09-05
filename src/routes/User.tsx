@@ -1,5 +1,5 @@
 import BarChart from "../components/BarChart";
-import { GraphData, ChartKey } from "../types";
+import { type GraphData, ChartKey } from "../types";
 import ChaartSkeletonWrapper from "../components/ChartSkeleton";
 import useSentryData from "../hooks/useSentryData";
 

@@ -1,5 +1,5 @@
 import { METRICS_TOOLTIP_INFO } from "../constants";
-import { ChartKey } from "../types";
+import { type ChartKey } from "../types";
 import Square from "./Square";
 
 interface Props {

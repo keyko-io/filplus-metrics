@@ -12,7 +12,7 @@ const TotalCount = ({ data, n, bgColor, title }: Props) => {
   return (
     <div className="flex items-center text-xs">
       <Square bgColor={bgColor} />
-      {title || "Total count : "}
+      {title ?? "Total count : "}
       {calculateTotalLastNDays(data, n)}
     </div>
   );

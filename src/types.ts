@@ -9,15 +9,13 @@ export enum SentryDataTypes {
   SigningStats = "tx"
 }
 
-export type ChartDataResponse = {
-  [key: string]: Record<string, number>;
-};
+export type ChartDataResponse = Record<string, Record<string, number>>;
 
-export type BarData = {
+export interface BarData {
   day: string;
   positive: number;
   negative: number;
-};
+}
 
 export enum ChartKey {
   Propose = "propose",
@@ -28,8 +26,8 @@ export enum ChartKey {
   Bugs = "bugs"
 }
 
-export type GraphData = {
+export interface GraphData {
   title: ChartKey;
   success: Record<string, number>;
   failure: Record<string, number>;
-};
+}
