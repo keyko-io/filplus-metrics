@@ -1,5 +1,11 @@
 import axios from "axios";
-import { SentryDataTypes, SentryDataPeriods } from "../types";
+import {
+  type SentryDataTypes,
+  type SentryDataPeriods,
+  type Validator,
+  ServiceStatus,
+  type CheckServiceStatusOptions
+} from "../types";
 import { formatSentryURL } from "../utils";
 import { config } from "../config";
 
@@ -13,7 +19,7 @@ export const fetchSentryData = async (
 
     return response.data;
   } catch (error) {
-    //console.log(error);
+    // console.log(error);
   }
 };
 
@@ -22,7 +28,7 @@ export const fetchSentryEvents = async () => {
     const response = await axios.get(`${config.apiUri}/stats/sentry/events`);
     return response.data;
   } catch (error) {
-    //console.log(error);
+    // console.log(error);
   }
 };
 
@@ -32,6 +38,31 @@ export const getOpenBugsCount = async () => {
     const res = await axios.get(url);
     return res.data;
   } catch (error) {
-    //console.log(error);
+    // console.log(error);
+  }
+};
+
+export const checkServiceStatus = async (
+  url: string,
+  validator: Validator,
+  options?: CheckServiceStatusOptions
+): Promise<ServiceStatus> => {
+  try {
+    const headers: HeadersInit = {};
+    if (options?.apiKey) {
+      headers["x-api-key"] = options.apiKey;
+    }
+    const response = await fetch(url, {
+      method: "GET",
+      headers
+    });
+
+    if (await validator(response)) {
+      return ServiceStatus.Online;
+    }
+    return ServiceStatus.Offline;
+  } catch (error) {
+    console.log(error);
+    return ServiceStatus.Offline;
   }
 };

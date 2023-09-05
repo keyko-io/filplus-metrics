@@ -1,4 +1,4 @@
-import { ChartKey } from "./types";
+import { ChartKey, ServiceStatus } from "./types";
 
 export const METRICS_TOOLTIP_INFO = {
   propose: {
@@ -78,4 +78,10 @@ export const CHART_TITLES: Record<ChartKey, string> = {
   [ChartKey.GithubLogin]: "Github Login",
   [ChartKey.GithubToken]: "Github Token Load",
   [ChartKey.Bugs]: "Bugs"
+};
+
+export const SERVICE_STATUS: Record<ServiceStatus, string> = {
+  [ServiceStatus.Online]: "online",
+  [ServiceStatus.Offline]: "offline",
+  [ServiceStatus.Checking]: "checking"
 };
