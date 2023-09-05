@@ -8,3 +8,8 @@ export const backendValidator = async (
   const ret = await response.text();
   return ret === "OK";
 };
+
+export const ssabotValidator = async (response: Response): Promise<boolean> => {
+  const ret = await response.json();
+  return ret?.execResult === 0;
+};

@@ -57,12 +57,12 @@ export const checkServiceStatus = async (
       headers
     });
 
-    if (validator(response)) {
+    if (await validator(response)) {
       return ServiceStatus.Online;
     }
     return ServiceStatus.Offline;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return ServiceStatus.Offline;
   }
 };

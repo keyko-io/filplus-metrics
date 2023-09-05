@@ -1,4 +1,8 @@
-import { backendValidator, dmobValidator } from "../api/validators";
+import {
+  backendValidator,
+  dmobValidator,
+  ssabotValidator
+} from "../api/validators";
 import { useServiceStatus } from "../hooks/useServiceStatus";
 import { ServiceStatusIndicator } from "../components/ServiceStatusIndicator";
 import { config } from "../config";
@@ -17,16 +21,19 @@ const Status = () => {
   //   config.serviceUrls.dmobApi,
   //   dmobValidator
   // );
-  // const ssaBotStatus = useServiceStatus(
-  //   config.serviceUrls.dmobApi,
-  //   dmobValidator
-  // );
+  const ssaBotStatus = useServiceStatus(
+    config.serviceUrls.ssaBot,
+    ssabotValidator
+  );
   return (
-    <div className="flex flex-col">
-      <ServiceStatusIndicator name="Backend" status={backendStatus} />
-      <ServiceStatusIndicator name="Dmob API" status={dmobStatus} />
-      {/* <ServiceStatusIndicator name="Ldn Bot" status={ldnBotStatus} />
-      <ServiceStatusIndicator name="SSA Bot" status={ssaBotStatus} /> */}
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-2xl mb-6">Services Status Page</h1>
+      <div className="w-2/3 bg-white rounded-lg shadow-lg">
+        <ServiceStatusIndicator name="Backend" status={backendStatus} />
+        <ServiceStatusIndicator name="Dmob API" status={dmobStatus} />
+        {/* <ServiceStatusIndicator name="Ldn Bot" status={ldnBotStatus} /> */}
+        <ServiceStatusIndicator name="SSA Bot" status={ssaBotStatus} />
+      </div>
     </div>
   );
 };

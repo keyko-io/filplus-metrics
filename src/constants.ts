@@ -81,7 +81,7 @@ export const CHART_TITLES: Record<ChartKey, string> = {
 };
 
 export const SERVICE_STATUS: Record<ServiceStatus, string> = {
-  [ServiceStatus.Online]: "Online",
-  [ServiceStatus.Offline]: "Offline",
-  [ServiceStatus.Checking]: "Checking"
+  [ServiceStatus.Online]: "online",
+  [ServiceStatus.Offline]: "offline",
+  [ServiceStatus.Checking]: "checking"
 };
