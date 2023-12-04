@@ -47,4 +47,6 @@ export type Validator = (data: Response) => Promise<boolean>;
 
 export interface CheckServiceStatusOptions {
   apiKey?: string;
+  method?: string;
+  body?: any;
 }

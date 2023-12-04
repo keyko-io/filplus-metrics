@@ -6,7 +6,7 @@ export const config = {
       "https://fp-core.6omfj573u6naa.us-east-2.cs.amazonlightsail.com/health",
     ldnBot:
       import.meta.env.VITE_LDN_BOT_SERVICE_URI ||
-      "http://localhost:8089/health/check",
+      "https://test.verification.rocks/ldnBotHealthcheck",
     ssaBot:
       import.meta.env.VITE_SSA_BOT_SERVICE_URI ||
       "http://localhost:4000/stats/aws/metrics",
@@ -14,5 +14,7 @@ export const config = {
       import.meta.env.VITE_DMOB_API_URI ||
       "https://api.filplus.d.interplanetary.one/public/api/getAllowanceAssignedToLdnV3InLast2Weeks"
   },
-  dmobApiKey: import.meta.env.VITE_DMOB_API_KEY || ""
+  dmobApiKey: import.meta.env.VITE_DMOB_API_KEY || "",
+  ldnBotAuthKey: import.meta.env.VITE_LDN_BOT_AUTH_KEY || "",
+
 };
