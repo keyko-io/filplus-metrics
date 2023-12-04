@@ -49,13 +49,19 @@ export const checkServiceStatus = async (
 ): Promise<ServiceStatus> => {
   try {
     const headers: HeadersInit = {};
+    const fetchOptions: any = {};
+    let body: any = {};
     if (options?.apiKey) {
       headers["x-api-key"] = options.apiKey;
     }
-    const response = await fetch(url, {
-      method: "GET",
-      headers
-    });
+    if (options?.body) {
+      body = options.body;
+      fetchOptions.body = JSON.stringify(body);
+      headers["Content-Type"] = "application/json";
+    }
+    fetchOptions.headers = headers;
+    fetchOptions.method = options?.method ?? "GET";
+    const response = await fetch(url, fetchOptions);
 
     if (await validator(response)) {
       return ServiceStatus.Online;

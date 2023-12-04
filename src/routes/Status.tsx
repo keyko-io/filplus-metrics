@@ -20,7 +20,13 @@ const Status = () => {
   );
   const ldnBotStatus = useServiceStatus(
     config.serviceUrls.ldnBot,
-    ldnBotValidator
+    ldnBotValidator,
+    {
+      body: {
+        auth: config.ldnBotAuthKey
+      },
+      method: "POST"
+    }
   );
   const ssaBotStatus = useServiceStatus(
     config.serviceUrls.ssaBot,
