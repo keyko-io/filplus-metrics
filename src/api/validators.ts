@@ -11,8 +11,8 @@ export const backendValidator = async (
 };
 
 export const ldnBotValidator = async (response: Response): Promise<boolean> => {
-  const ret = await response.text();
-  return ret === "OK";
+  const ret = await response.json();
+  return ret.healthCheckStatusCode === 1;
 };
 
 export const ssaBotValidator = async (response: Response): Promise<boolean> => {
