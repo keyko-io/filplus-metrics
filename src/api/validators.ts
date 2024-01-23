@@ -12,7 +12,7 @@ export const backendValidator = async (
 
 export const ldnBotValidator = async (response: Response): Promise<boolean> => {
   const ret = await response.json();
-  return ret.healthCheckStatusCode === 1;
+  return ret.healthCheckStatus === "running";
 };
 
 export const ssaBotValidator = async (response: Response): Promise<boolean> => {
