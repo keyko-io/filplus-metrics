@@ -6,7 +6,7 @@ export const config = {
       "https://fp-core-prod.dp04sa0tdc6pk.us-east-1.cs.amazonlightsail.com/health",
     ldnBot:
       import.meta.env.VITE_LDN_BOT_SERVICE_URI ||
-      "https://test.verification.rocks/ldnBotHealthcheck",
+      "https://test.verification.rocks/getHealthcheckStatus",
     ssaBot:
       import.meta.env.VITE_SSA_BOT_SERVICE_URI ||
       "http://localhost:4000/stats/aws/metrics",

@@ -22,10 +22,7 @@ const Status = () => {
     config.serviceUrls.ldnBot,
     ldnBotValidator,
     {
-      body: {
-        auth: config.ldnBotAuthKey
-      },
-      method: "POST"
+      method: "GET"
     }
   );
   const ssaBotStatus = useServiceStatus(
