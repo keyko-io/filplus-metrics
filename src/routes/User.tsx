@@ -46,6 +46,23 @@ const User = () => {
     ];
   }
 
+  let allEventsValid = true;
+
+  for (let i = 0; i < userData.length; i++) {
+    const item = userData[i];
+
+    if (!item.success || !item.failure) {
+      allEventsValid = false;
+      break;
+    }
+  }
+
+  if (!allEventsValid) {
+    return (
+      <div className="p-4 bg-white rounded-md">There are no User events</div>
+    );
+  }
+
   return (
     <div className="flex flex-col space-y-4">
       {userData.map(data => (

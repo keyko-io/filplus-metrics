@@ -5,7 +5,7 @@ import { BugIcon, CubeIcon, UserIcon, StatusIcon } from "../icons";
 const navigationItems = [
   {
     name: "Blockchain",
-    to: "",
+    to: "blockchain",
     svg: <CubeIcon />
   },
   {
@@ -20,7 +20,7 @@ const navigationItems = [
   },
   {
     name: "Status",
-    to: "status",
+    to: "",
     svg: <StatusIcon />
   }
 ];
