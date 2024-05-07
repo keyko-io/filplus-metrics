@@ -12,7 +12,7 @@ export const router = createHashRouter([
     element: <Root />,
     children: [
       {
-        element: <Blockchain />,
+        element: <Status />,
         index: true
       },
       {
@@ -24,8 +24,8 @@ export const router = createHashRouter([
         element: <Bugs />
       },
       {
-        path: "status",
-        element: <Status />
+        path: "blockchain",
+        element: <Blockchain />
       }
     ]
   },

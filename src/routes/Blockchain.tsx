@@ -35,6 +35,25 @@ const Blockchain = () => {
     ];
   }
 
+  let allEventsValid = true;
+
+  for (let i = 0; i < blockchainData.length; i++) {
+    const item = blockchainData[i];
+
+    if (!item.success || !item.failure) {
+      allEventsValid = false;
+      break;
+    }
+  }
+
+  if (!allEventsValid) {
+    return (
+      <div className="p-4 bg-white rounded-md">
+        There is no Blockchain events
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col space-y-4">
       {blockchainData.map(item => (
