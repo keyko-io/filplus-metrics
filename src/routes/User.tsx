@@ -59,7 +59,7 @@ const User = () => {
 
   if (!allEventsValid) {
     return (
-      <div className="p-4 bg-white rounded-md">There is no User events</div>
+      <div className="p-4 bg-white rounded-md">There are no User events</div>
     );
   }
 

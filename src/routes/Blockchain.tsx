@@ -49,7 +49,7 @@ const Blockchain = () => {
   if (!allEventsValid) {
     return (
       <div className="p-4 bg-white rounded-md">
-        There is no Blockchain events
+        There are no Blockchain events
       </div>
     );
   }
